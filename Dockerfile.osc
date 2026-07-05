@@ -27,6 +27,8 @@ COPY --from=builder /root/.local /root/.local
 
 ENV PATH=/root/.local/bin:$PATH
 
-EXPOSE 9003
+ENV PORT=8080
 
-CMD ["rapidocr_api", "-ip", "0.0.0.0", "-p", "9003", "-workers", "2"]
+EXPOSE 8080
+
+CMD ["sh", "-c", "rapidocr_api -ip 0.0.0.0 -p ${PORT} -workers 2"]
